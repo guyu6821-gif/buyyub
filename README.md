@@ -51,13 +51,48 @@ python -m http.server 8000
 
 ## Render.com-da Deploy
 
+### Addım 1: Render.com Hesabı
+
 1. **Render.com** hesabınıza daxil olun: https://render.com
-2. "New Static Site" seçin
-3. GitHub repository-ni bağlayın: `guyu6821-gif/buyyub`
-4. Parametrlər:
-   - **Build Command:** boş buraxın
-   - **Publish Directory:** `.` (root directory)
-5. "Create Static Site" düyməsinə basın
+2. GitHub hesabınızla qoşulun
+
+### Addım 2: Static Site Yaradın
+
+1. Dashboard-da "**New +**" düyməsinə basın
+2. "**Static Site**" seçin
+3. GitHub repository-ni tapın: `guyu6821-gif/buyyub`
+4. "**Connect**" düyməsinə basın
+
+### Addım 3: Konfiqurasiya
+
+```
+Name: unify-bdu (və ya istədiyiniz ad)
+Branch: main
+Build Command: (boş buraxın və ya: echo 'Static site')
+Publish Directory: .
+Auto-Deploy: Yes
+```
+
+### Addım 4: Deploy
+
+1. "**Create Static Site**" düyməsinə basın
+2. Deployment başlayacaq (1-2 dəqiqə)
+3. Hazır! URL əldə edəcəksiniz
+
+### ⚠️ Əhəmiyyətli:
+
+- ✅ **package.json** və **package-lock.json** artıq əlavə edilib
+- ✅ **_redirects** faylı PWA routing üçün konfiqurasiya edilib
+- ✅ **Lock file warning** düzəldildi
+- ✅ Heç bir build command lazım deyil (pure static)
+
+### Deploy URL:
+
+Saytınız bu formada əlçatan olacaq:
+```
+https://unify-bdu.onrender.com
+```
+(və ya seçdiyiniz ad)
 
 ## Struktur
 
