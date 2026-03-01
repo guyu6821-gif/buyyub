@@ -1,6 +1,6 @@
 {
-  "name": "BDU Tələbə Köməkçisi",
-  "short_name": "BDU Köməkçi",
+  "name": "BDU Tələbə Köməkçisi - UniFy",
+  "short_name": "UniFy BDU",
   "description": "Bakı Dövlət Universiteti tələbələri üçün hesablama və məlumat platforması",
   "start_url": "/",
   "display": "standalone",
@@ -8,6 +8,12 @@
   "theme_color": "#1e40af",
   "orientation": "portrait-primary",
   "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
@@ -20,5 +26,8 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "categories": ["education", "utilities"],
+  "screenshots": [],
+  "prefer_related_applications": false
 }

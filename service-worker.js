@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v1.0.0';
+const CACHE_VERSION = 'v1.0.1';
 const CACHE_NAME = `bdu-helper-${CACHE_VERSION}`;
 
 const urlsToCache = [
@@ -7,6 +7,7 @@ const urlsToCache = [
   '/styles.css',
   '/app.js',
   '/manifest.json',
+  '/logo.png',
   '/icon-192.png',
   '/icon-512.png'
 ];
@@ -67,6 +68,9 @@ self.addEventListener('fetch', (event) => {
             });
           
           return response;
+        }).catch(() => {
+          // Network failed, return cached response if available
+          return caches.match('/index.html');
         });
       })
   );

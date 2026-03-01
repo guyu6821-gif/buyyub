@@ -15,22 +15,41 @@ if ('serviceWorker' in navigator) {
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
 
+// Check if app is already installed
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+    // App is installed, hide install button
+    if (installBtn) {
+        installBtn.style.display = 'none';
+    }
+} else {
+    // App is not installed, show install button
+    if (installBtn) {
+        installBtn.style.display = 'flex';
+    }
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    installBtn.style.display = 'flex';
+    if (installBtn) {
+        installBtn.style.display = 'flex';
+    }
 });
 
-installBtn.addEventListener('click', async () => {
-    if (!deferredPrompt) {
-        return;
-    }
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log(`Install prompt outcome: ${outcome}`);
-    deferredPrompt = null;
-    installBtn.style.display = 'none';
-});
+if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) {
+            // Fallback: Show instructions for manual installation
+            alert('Tətbiqi quraşdırmaq üçün:\n\n1. Brauzer menyusunu açın\n2. "Ana ekrana əlavə et" seçin\n3. Təsdiq edin');
+            return;
+        }
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`Install prompt outcome: ${outcome}`);
+        deferredPrompt = null;
+        installBtn.style.display = 'none';
+    });
+}
 
 window.addEventListener('appinstalled', () => {
     console.log('PWA quraşdırıldı');
@@ -299,4 +318,15 @@ function showResult(elementId, message, className) {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     console.log('BDU Tələbə Köməkçisi yükləndi');
+    
+    // Hide splash screen after page loads
+    setTimeout(() => {
+        const splashScreen = document.getElementById('splash-screen');
+        if (splashScreen) {
+            splashScreen.classList.add('hidden');
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+            }, 500);
+        }
+    }, 2000);
 });
