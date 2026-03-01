@@ -2,6 +2,19 @@
 
 Bakı Dövlət Universiteti tələbələri üçün hesablama və məlumat platforması.
 
+## ⚠️ ÖNƏMLİ: Bu Pure Static Site-dır
+
+**Bu layihə Render.com, Netlify və ya Vercel üçün hazırlanıb.**
+- ✅ **Render.com** (tövsiyə edilir - ən asan)
+- ✅ Netlify (sürətli)
+- ✅ Vercel (modern)
+- ✅ GitHub Pages (sadə)
+- ❌ **Cloudflare Workers** (işləməz - backend yoxdur, pure static site-dır)
+
+**📖 Ətraflı məlumat:** `DEPLOY_PLATFORM.md` faylına baxın
+
+**🔄 Cache və Versiya Sistemi:** `CACHE_VERSIYA_IZAH.md` faylına baxın
+
 ## Xüsusiyyətlər
 
 - ✅ Semestr balı hesablama (seminar, kollekvium, sərbəst iş, davamiyyət)
