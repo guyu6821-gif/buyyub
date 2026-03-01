@@ -1,0 +1,23 @@
+{
+  "name": "unify-bdu",
+  "version": "1.0.1",
+  "description": "BDU Tələbə Köməkçisi - UniFy PWA",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "build": "echo 'Static site - no build needed'",
+    "test": "echo 'No tests configured'"
+  },
+  "keywords": [
+    "bdu",
+    "education",
+    "calculator",
+    "pwa"
+  ],
+  "author": "desespere_etoile",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guyu6821-gif/buyyub.git"
+  }
+}

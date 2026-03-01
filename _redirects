@@ -1,0 +1,15 @@
+# Render.com Static Site Configuration
+# This file configures deployment for UniFy BDU PWA
+
+# Build Configuration
+# No build needed - pure static HTML/CSS/JS
+
+# Publish Directory
+# All files are in root directory
+
+# Environment
+# No environment variables needed
+
+# Routing
+# All requests should serve index.html for PWA
+/*  /index.html  200
