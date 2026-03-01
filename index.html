@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bakı Dövlət Universiteti tələbələri üçün hesablama platforması">
+    <meta name="theme-color" content="#1e40af">
+    <title>BDU Tələbə Köməkçisi</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="/icon-192.png">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- WhatsApp Banner -->
+    <div class="whatsapp-banner">
+        <span>Ən ucuz sərbəst iş hazırlanması</span>
+        <a href="https://wa.me/994559406018" target="_blank" class="whatsapp-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="whatsapp-icon">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Install Button -->
+    <button id="installBtn" class="install-btn" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="install-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Quraşdır
+    </button>
+
+    <!-- Main Container -->
+    <div id="app" class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <h1 class="main-title">BDU Tələbə Köməkçisi</h1>
+            
+            <div class="menu-grid">
+                <button class="menu-item" onclick="navigateTo('semesterCalc')">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">Semestr Balı</span>
+                </button>
+                
+                <button class="menu-item" onclick="navigateTo('gpaCalc')">
+                    <span class="menu-icon">🎓</span>
+                    <span class="menu-text">ÜOMG Hesablama</span>
+                </button>
+                
+                <button class="menu-item" onclick="navigateTo('examFeeCalc')">
+                    <span class="menu-icon">💰</span>
+                    <span class="menu-text">25% İmtahan Pulu</span>
+                </button>
+                
+                <button class="menu-item" onclick="navigateTo('ageCalc')">
+                    <span class="menu-icon">🎂</span>
+                    <span class="menu-text">Yaş Hesablayıcı</span>
+                </button>
+                
+                <button class="menu-item" onclick="navigateTo('dictionary')">
+                    <span class="menu-icon">📖</span>
+                    <span class="menu-text">Lüğət</span>
+                </button>
+                
+                <button class="menu-item" onclick="navigateTo('info')">
+                    <span class="menu-icon">ℹ️</span>
+                    <span class="menu-text">Məlumat</span>
+                </button>
+                
+                <button class="menu-item" onclick="navigateTo('links')">
+                    <span class="menu-icon">🔗</span>
+                    <span class="menu-text">Sürətli Linklər</span>
+                </button>
+            </div>
+
+            <!-- About Section (only on home page) -->
+            <div class="about-section">
+                <button class="info-btn" onclick="toggleAbout()">ⓘ</button>
+                <div id="aboutText" class="about-text" style="display: none;">
+                    O, boşluq yaradır.
+                </div>
+            </div>
+        </div>
+
+        <!-- Semester Calculator Page -->
+        <div id="semesterCalc" class="page">
+            <button class="back-btn" onclick="navigateBack()">← Geri</button>
+            <h2 class="page-title">Semestr Balı Hesablama</h2>
+            
+            <div class="calc-section">
+                <h3>Seminar</h3>
+                <div class="input-group">
+                    <label>Seminar sayı (maks. 9):</label>
+                    <input type="number" id="seminarCount" min="0" max="9" value="0">
+                    <button onclick="generateSeminarInputs()">Yarat</button>
+                </div>
+                <div id="seminarInputs" class="dynamic-inputs"></div>
+            </div>
+
+            <div class="calc-section">
+                <h3>Kollekvium</h3>
+                <div class="input-group">
+                    <label>Kollekvium sayı (maks. 4):</label>
+                    <input type="number" id="colloquiumCount" min="0" max="4" value="0">
+                    <button onclick="generateColloquiumInputs()">Yarat</button>
+                </div>
+                <div id="colloquiumInputs" class="dynamic-inputs"></div>
+            </div>
+
+            <div class="calc-section">
+                <h3>Sərbəst İş</h3>
+                <div class="input-group">
+                    <label>Bal (0-10):</label>
+                    <input type="number" id="independentWork" min="0" max="10" step="0.1" value="0">
+                </div>
+            </div>
+
+            <div class="calc-section">
+                <h3>Davamiyyət</h3>
+                <div class="input-group">
+                    <label>Saat seçin:</label>
+                    <select id="attendanceHours">
+                        <option value="30">30 saat</option>
+                        <option value="45">45 saat</option>
+                        <option value="60">60 saat</option>
+                        <option value="75">75 saat</option>
+                        <option value="90">90 saat</option>
+                        <option value="105">105 saat</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Qayıb sayı:</label>
+                    <input type="number" id="absences" min="0" value="0">
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="calculateSemester()">Hesabla</button>
+            <div id="semesterResult" class="result"></div>
+        </div>
+
+        <!-- GPA Calculator Page -->
+        <div id="gpaCalc" class="page">
+            <button class="back-btn" onclick="navigateBack()">← Geri</button>
+            <h2 class="page-title">ÜOMG Hesablama</h2>
+            
+            <div class="calc-section">
+                <div class="input-group">
+                    <label>Fənn sayı:</label>
+                    <input type="number" id="subjectCount" min="1" value="1">
+                    <button onclick="generateSubjectInputs()">Yarat</button>
+                </div>
+                <div id="subjectInputs" class="dynamic-inputs"></div>
+            </div>
+
+            <button class="calc-btn" onclick="calculateGPA()">Hesabla</button>
+            <div id="gpaResult" class="result"></div>
+        </div>
+
+        <!-- Exam Fee Calculator Page -->
+        <div id="examFeeCalc" class="page">
+            <button class="back-btn" onclick="navigateBack()">← Geri</button>
+            <h2 class="page-title">25 Faiz İmtahan Pulu</h2>
+            
+            <div class="calc-section">
+                <div class="input-group">
+                    <label>İllik ödəniş:</label>
+                    <input type="number" id="annualPayment" min="0" value="0">
+                </div>
+                <div class="input-group">
+                    <label>Fənnin kredit sayı:</label>
+                    <input type="number" id="creditCount" min="1" value="1">
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="calculateExamFee()">Hesabla</button>
+            <div id="examFeeResult" class="result"></div>
+        </div>
+
+        <!-- Age Calculator Page -->
+        <div id="ageCalc" class="page">
+            <button class="back-btn" onclick="navigateBack()">← Geri</button>
+            <h2 class="page-title">Yaş Hesablayıcı</h2>
+            
+            <div class="calc-section">
+                <div class="input-group">
+                    <label>Doğum tarixi (GG/AA/İİİİ):</label>
+                    <input type="date" id="birthDate">
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="calculateAge()">Hesabla</button>
+            <div id="ageResult" class="result"></div>
+        </div>
+
+        <!-- Dictionary Page -->
+        <div id="dictionary" class="page">
+            <button class="back-btn" onclick="navigateBack()">← Geri</button>
+            <h2 class="page-title">Lüğət</h2>
+            
+            <div class="info-list">
+                <div class="info-item">
+                    <strong>Mühazirə</strong>
+                    <p>Müəllimin keçdiyi dərs.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Page -->
+        <div id="info" class="page">
+            <button class="back-btn" onclick="navigateBack()">← Geri</button>
+            <h2 class="page-title">Məlumat</h2>
+            
+            <div class="info-list">
+                <div class="info-item">
+                    <strong>Əlaçı olmaq üçün:</strong>
+                    <p>Bütün fənlər 91+ olmalıdır.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links Page -->
+        <div id="links" class="page">
+            <button class="back-btn" onclick="navigateBack()">← Geri</button>
+            <h2 class="page-title">Sürətli Linklər</h2>
+            
+            <div class="links-list">
+                <a href="https://bdu.edu.az" target="_blank" class="link-item">
+                    🌐 BDU Rəsmi Web Saytı
+                </a>
+                <a href="https://semslogin.bdu.edu.az" target="_blank" class="link-item">
+                    🎓 SemsLogin - Akademik Portal
+                </a>
+                <a href="https://whatsapp.com/channel/0029Va85Ls85q08WyYoGeJ3r" target="_blank" class="link-item">
+                    💬 BDU WhatsApp Kanal
+                </a>
+                <a href="https://www.instagram.com/bdu_eduaz" target="_blank" class="link-item">
+                    📸 BDU Instagram
+                </a>
+                <a href="https://t.me/bdu_eduaz" target="_blank" class="link-item">
+                    ✈️ BDU Telegram
+                </a>
+                <a href="https://www.instagram.com/desespere_etoile" target="_blank" class="link-item">
+                    👤 Sayt Sahibi
+                </a>
+                <a href="https://t.me/+WUKxtnDjo2E5YTcy" target="_blank" class="link-item">
+                    💭 Tələbə Chat Qrupu
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
