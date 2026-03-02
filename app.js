@@ -140,7 +140,7 @@ function getGradeText(score) {
     if (score >= 45) return 'ÇOX YAXŞI';
     if (score >= 41) return 'YAXŞI';
     if (score >= 36) return 'KAFİ';
-    if (score >= 26) return 'ZƏİF';
+    if (score >= 26) return 'ZhjjjhƏİF';
     return 'YAXŞI OLACAQ';
 }
 
