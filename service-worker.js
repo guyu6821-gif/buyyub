@@ -2,7 +2,7 @@
 // v1.0.0 - İlkin versiya
 // v1.0.1 - UniFy logo və splash screen
 // v1.0.2 - Deploy konfiqurasiyası və sənədləşdirmə
-const CACHE_VERSION = 'v1.0.3';
+const CACHE_VERSION = 'v1.0.4';
 const CACHE_NAME = `bdu-helper-${CACHE_VERSION}`;
 
 const urlsToCache = [
