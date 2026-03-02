@@ -1,7 +1,7 @@
 {
   "name": "Tələbə Köməkçisi - UniFy",
   "short_name": "UniFy",
-  "description": "Bakı Dövlət Universiteti Tələbələri üçün Hesablama və Məlumat Platforması",
+  "description": "Tələbələr üçün Hesablama və Məlumat Platforması",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
