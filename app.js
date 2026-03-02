@@ -189,17 +189,54 @@ function calculateSemester() {
     // Check for fail
     if (attendanceScore === 'kəsr') {
         showResult('semesterResult', 'Davamiyyət üzrə KƏSR', 'danger');
+        document.getElementById('semesterStats').style.display = 'none';
         return;
     }
 
+    // Calculate components
+    const seminarComponent = (seminarAvg * 0.4) * 3;
+    const colloquiumComponent = (colloquiumAvg * 0.6) * 3;
+    const examComponent = seminarComponent + colloquiumComponent;
+    
     // Calculate final score
-    const finalScore = (seminarAvg * 0.4 + colloquiumAvg * 0.6) * 3 + attendanceScore + independentWork;
+    const finalScore = examComponent + attendanceScore + independentWork;
     const roundedScore = Math.round(finalScore * 100) / 100;
     
     const gradeText = getGradeText(roundedScore);
     const resultClass = getResultClass(roundedScore);
     
     showResult('semesterResult', `Semestr Balı: ${roundedScore} / 50<br>${gradeText}`, resultClass);
+    
+    // Show statistics
+    const statsBox = document.getElementById('semesterStats');
+    statsBox.innerHTML = `
+        <h3>📊 Bal Statistikası</h3>
+        <div class="stats-item">
+            <span class="stats-label">Seminar (orta × 0.4 × 3):</span>
+            <span class="stats-value">${Math.round(seminarComponent * 100) / 100} bal</span>
+        </div>
+        <div class="stats-item">
+            <span class="stats-label">Kollekvium (orta × 0.6 × 3):</span>
+            <span class="stats-value">${Math.round(colloquiumComponent * 100) / 100} bal</span>
+        </div>
+        <div class="stats-item">
+            <span class="stats-label">İmtahan komponenti:</span>
+            <span class="stats-value">${Math.round(examComponent * 100) / 100} bal</span>
+        </div>
+        <div class="stats-item">
+            <span class="stats-label">Davamiyyət:</span>
+            <span class="stats-value">${attendanceScore} bal</span>
+        </div>
+        <div class="stats-item">
+            <span class="stats-label">Sərbəst iş:</span>
+            <span class="stats-value">${independentWork} bal</span>
+        </div>
+        <div class="stats-item" style="border-top: 2px solid #1e40af; margin-top: 10px; padding-top: 10px;">
+            <span class="stats-label"><strong>CƏMI:</strong></span>
+            <span class="stats-value" style="font-size: 18px; color: #1e40af;">${roundedScore} / 50</span>
+        </div>
+    `;
+    statsBox.style.display = 'block';
 }
 
 // GPA Calculator Functions
